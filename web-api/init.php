@@ -11,7 +11,7 @@
 	{
 		$files = scandir($plugin_dir);
 		
-		if($files != FALSE)
+		if($files != false)
 		{
 			foreach($files as $file)
 			{
