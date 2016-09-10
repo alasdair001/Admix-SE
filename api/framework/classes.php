@@ -20,4 +20,35 @@
 		}
 	}
 	
+	class Pricing
+	{
+		private $currencies = array();
+		
+		function put($currency, $price)
+		{
+			$currencies[$currency] = $price;
+		}
+		
+		function get($currency)
+		{
+			return $currencies[$currency];
+		}
+	}
+	
+	class Product
+	{
+		private $id;
+		private $name;
+		private $description;
+		private $pricing;
+		
+		function __construct($id, $name, $description, $price)
+		{
+			$this->id = $id;
+			$this->name = $name;
+			$this->description = $description;
+			$this->price = $price;
+		}
+	}
+	
 ?>
