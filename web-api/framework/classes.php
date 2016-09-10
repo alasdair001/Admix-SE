@@ -42,12 +42,12 @@
 		private $description;
 		private $pricing;
 		
-		function __construct($id, $name, $description, $price)
+		function __construct($id, $name, $description, $pricing)
 		{
 			$this->id = $id;
 			$this->name = $name;
 			$this->description = $description;
-			$this->price = $price;
+			$this->pricing = $pricing;
 		}
 	}
 	
