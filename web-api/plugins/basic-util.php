@@ -14,5 +14,18 @@
 		
 		return true;
 	}
+
+	function all_not_empty($array)
+	{
+		foreach($array as $var)
+		{
+			if(empty(strval($var)))
+			{
+				return false;
+			}
+		}
+		
+		return true;
+	}
 	
 ?>
