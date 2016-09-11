@@ -47,7 +47,7 @@
 			
 			foreach($array as $_array)
 			{
-				$parse = parse_single($_array);
+				$parse = UserParse::parse_single($_array);
 				
 				if(!$parse)
 				{
