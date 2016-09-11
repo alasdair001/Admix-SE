@@ -12,7 +12,7 @@
 			
 			if($user != false)
 			{
-				die($user->username);
+				die('Username: '.$user->username);
 			}else
 			{
 				die('Failed to select user :(');

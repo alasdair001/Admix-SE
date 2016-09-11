@@ -61,6 +61,41 @@
 			
 			return false;
 		}
+		
+		static function insert($table, $data)
+		{
+			$keys_string = "(";
+			$values_string = "(";
+			
+			$current = 0;
+			foreach($data as $key => $value)
+			{			
+				$keys_string .= "`$key`";
+				$values_string .= "$value";
+				
+				if($current < sizeof($data) - 1)
+				{
+					$keys_string .= ", ";
+					$values_string .= ", ";
+				}
+				
+				$current += 1;	
+			}
+			
+			$keys_string .= ")";	
+			$values_string .= ")";		
+			
+			$mysql_query_string = "INSERT INTO `$table` $keys_string VALUES $values_string;";
+						
+			$mysql_query = mysql_query($mysql_query_string);
+			
+			return $mysql_query != false;
+		}
+		
+		static function to_mysql_string($value)
+		{
+			return "'$value'";
+		}
 	}
 	
 ?>

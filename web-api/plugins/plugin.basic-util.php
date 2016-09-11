@@ -18,7 +18,7 @@
 	function all_not_empty($array)
 	{
 		foreach($array as $check)
-		{
+		{	
 			if(empty($check))
 			{
 				return false;

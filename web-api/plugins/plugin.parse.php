@@ -64,4 +64,53 @@
 		}
 	}
 	
+	abstract class SessionParse
+	{
+		static function parse_single($array)
+		{
+			if(array_has_keys($array, array('ID', 'USER_ID', 'TOKEN', 'UPDATE_DATE', 'CREATION_DATE')))
+			{
+				$id = $array['ID'];
+				$user_id = $array['USER_ID'];
+				$token = $array['TOKEN'];
+				$update_date = $array['UPDATE_DATE'];
+				$creation_date = $array['CREATION_DATE'];
+							
+				if(all_not_empty(array($id, $user_id, $token, $update_date, $creation_date)))
+				{
+					if(is_numeric($id) && is_numeric($user_id))
+					{			
+						return new Session(intval($id), intval($user_id), $token, $update_date, $creation_date);	
+					}
+				}
+			}
+			
+			return false;
+		}
+		
+		static function parse_multiple($array)
+		{
+			$parsed = array();
+			
+			foreach($array as $_array)
+			{
+				$parse = self::parse_single($_array);
+				
+				if(!$parse)
+				{
+					return false;
+				}
+				
+				if(!array_push($parsed, $parse))
+				{
+					return false;
+				}
+			}
+			
+			return $parsed;
+		}
+	}
+	
+	
+	
 ?>

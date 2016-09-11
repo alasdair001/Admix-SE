@@ -26,6 +26,22 @@
 			}	
 			
 			return false;
+		}
+		
+		static function by_username($username)
+		{
+			$username = Database::safe_str($username);
+				
+			if($username != false)
+			{
+				$array = Database::select_single("SELECT * FROM `USERS` WHERE `USERNAME` = '$username';");
+				if($array != false)
+				{	
+					return UserParse::parse_single($array);
+				}
+			}
+						
+			return false;
 		}	
 	}	
 	
