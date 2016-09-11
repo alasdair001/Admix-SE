@@ -2,28 +2,31 @@
 	
 	// User MySQL API plugin
 	
-	function fetch_user_by_id($id)
+	abstract class UserFetch
 	{
-		if(is_numeric($id))
+		static function by_id($id)
 		{
-			$id = Database::safe_str($id);
-			
-			if($id != false)
+			if(is_numeric($id))
 			{
-				$id = intval($id);
+				$id = Database::safe_str($id);
 				
 				if($id != false)
 				{
-					$array = Database::select_single("SELECT * FROM `USERS` WHERE `ID` = $id;");
-					if($array != false)
+					$id = intval($id);
+					
+					if($id != false)
 					{
-						return UserParse::parse_single($array);
+						$array = Database::select_single("SELECT * FROM `USERS` WHERE `ID` = $id;");
+						if($array != false)
+						{	
+							return UserParse::parse_single($array);
+						}
 					}
 				}
-			}
+			}	
+			
+			return false;
 		}	
-		
-		return false;
-	}
+	}	
 	
 ?>

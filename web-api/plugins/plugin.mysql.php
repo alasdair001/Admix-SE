@@ -4,13 +4,18 @@
 
 	abstract class Database
 	{
-		static private $host = 'localhost';
-		static private $user = 'user';
-		static private $pass = 'xxxxxxxxxxx';
+		public static $host = 'localhost';
+		public static $user = 'Admix-SE-API';
+		public static $pass = 'xAR,#@Cakn.,';
 		
 		static function connect()
 		{
-			return mysql_connect($host, $user, $pass) != false;
+			return mysql_connect(self::$host, self::$user, self::$pass) != false;
+		}
+		
+		static function connect_db($database)
+		{
+			return mysql_select_db($database) != false;
 		}
 		
 		static function disconnect()

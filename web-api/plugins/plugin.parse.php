@@ -6,15 +6,15 @@
 	{
 		static function parse_single($array)
 		{
-			if(array_has_keys($array, array('id', 'username', 'email', 'password', 'state', 'capes', 'active_cape')))
+			if(array_has_keys($array, array('ID', 'USERNAME', 'EMAIL', 'PASSWORD', 'STATE', 'CAPES', 'ACTIVE_CAPE')))
 			{
-				$id = $array['id'];
-				$username = $array['username'];
-				$email = $array['email'];
-				$password = $array['password'];
-				$state = $array['state'];
-				$capes = $array['capes'];
-				$active_cape = $array['active_cape'];
+				$id = $array['ID'];
+				$username = $array['USERNAME'];
+				$email = $array['EMAIL'];
+				$password = $array['PASSWORD'];
+				$state = $array['STATE'];
+				$capes = $array['CAPES'];
+				$active_cape = $array['ACTIVE_CAPE'];
 							
 				if(all_not_empty(array($username, $email, $password, $capes)))
 				{
@@ -47,7 +47,7 @@
 			
 			foreach($array as $_array)
 			{
-				$parse = UserParse::parse_single($_array);
+				$parse = self::parse_single($_array);
 				
 				if(!$parse)
 				{
