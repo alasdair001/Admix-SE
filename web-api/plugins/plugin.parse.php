@@ -68,19 +68,20 @@
 	{
 		static function parse_single($array)
 		{
-			if(array_has_keys($array, array('ID', 'USER_ID', 'TOKEN', 'UPDATE_DATE', 'CREATION_DATE')))
+			if(array_has_keys($array, array('ID', 'USER_ID', 'TOKEN', 'REMEMBER_ME', 'UPDATE_DATE', 'CREATION_DATE')))
 			{
 				$id = $array['ID'];
 				$user_id = $array['USER_ID'];
 				$token = $array['TOKEN'];
+				$remember_me = $array['REMEMBER_ME'];
 				$update_date = $array['UPDATE_DATE'];
 				$creation_date = $array['CREATION_DATE'];
 							
-				if(all_not_empty(array($id, $user_id, $token, $update_date, $creation_date)))
+				if(all_not_empty(array($id, $user_id, $token, $remember_me, $update_date, $creation_date)))
 				{
 					if(is_numeric($id) && is_numeric($user_id))
 					{			
-						return new Session(intval($id), intval($user_id), $token, $update_date, $creation_date);	
+						return new Session(intval($id), intval($user_id), $token, $remember_me, $update_date, $creation_date);	
 					}
 				}
 			}

@@ -50,14 +50,16 @@
 		public $id;
 		public $user_id;
 		public $token;
+		public $remember_me;
 		public $update_date;
 		public $creation_date;
 		
-		function __construct($id, $user_id, $token, $update_date, $creation_date)
+		function __construct($id, $user_id, $token, $remember_me, $update_date, $creation_date)
 		{
 			$this->id = $id;
 			$this->user_id = $user_id;
 			$this->token = $token;
+			$this->remember_me = $remember_me;
 			$this->update_date = $update_date;
 			$this->creation_date = $creation_date;
 		}

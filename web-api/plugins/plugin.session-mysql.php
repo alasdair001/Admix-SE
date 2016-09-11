@@ -27,6 +27,30 @@
 			
 			return false;
 		}	
+		
+		static function by_user_id($user_id)
+		{
+			if(is_numeric($user_id))
+			{
+				$user_id = Database::safe_str($user_id);
+				
+				if($user_id != false)
+				{
+					$user_id = intval($user_id);
+					
+					if($user_id != false)
+					{
+						$array = Database::select_single("SELECT * FROM `SESSIONS` WHERE `USER_ID` = $user_id;");
+						if($array != false)
+						{	
+							return SessionParse::parse_single($array);
+						}
+					}
+				}
+			}	
+			
+			return false;
+		}	
 	}	
 	
 ?>
