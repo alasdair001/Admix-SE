@@ -1,19 +1,37 @@
 <?php
-
+	
+	// API usage example
+	
 	include('api/init.php');	
 	
-	$user_array = array(
+	$user_array_1 = array(
 		'id' => 1,
-		'username' => 'user',
-		'email' => 'email@example.com',
+		'username' => 'user1',
+		'email' => 'user1@example.com',
 		'password' => 'password',
 		'state' => USER_STATE_ACTIVE,
 		'capes' => '[1, 2, 3]',
 		'active_cape' => 3
 	);
+	$user_array_2 = array(
+		'id' => 1,
+		'username' => 'user2',
+		'email' => 'user2@example.com',
+		'password' => 'password',
+		'state' => USER_STATE_INACTIVE,
+		'capes' => '[1, 2]',
+		'active_cape' => 2
+	);
 	
-	$user = UserParse::parse_single($user_array);	
+	$users = UserParse::parse_multiple(array($user_array_1, $user_array_2));	
 	
-	echo $user->username;
+	if($users != false)
+	{
+		echo $users[0]->state;
+		echo $users[1]->state;
+	}else
+	{
+		die('Failed to parse user arrays..');
+	}
 	
 ?>
