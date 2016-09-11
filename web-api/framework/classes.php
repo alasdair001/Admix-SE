@@ -4,13 +4,13 @@
 	
 	class User
 	{
-		private $id;
-		private $username;
-		private $email;
-		private $password;
-		private $state;
-		private $capes;
-		private $active_cape;
+		public $id;
+		public $username;
+		public $email;
+		public $password;
+		public $state;
+		public $capes;
+		public $active_cape;
 		
 		function __construct($id, $username, $email, $password, $state, $capes, $active_cape)
 		{
@@ -28,9 +28,9 @@
 	
 	class Cape
 	{
-		private $id;
-		private $name;
-		private $price;
+		public $id;
+		public $name;
+		public $price;
 		
 		function __construct($id, $name, $price)
 		{
@@ -41,7 +41,7 @@
 		
 		function image_location()
 		{
-			return "/home/billybob1060/public_html/api/storage/capes/".sha1($this->id).".png");
+			return "/home/billybob1060/public_html/api/storage/capes/".sha1($this->id).".png";
 		}
 	}
 	

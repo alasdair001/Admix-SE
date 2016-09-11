@@ -4,26 +4,26 @@
 
 	abstract class Database
 	{
-		private $host = 'localhost';
-		private $user = 'user';
-		private $pass = 'xxxxxxxxxxx';
+		static private $host = 'localhost';
+		static private $user = 'user';
+		static private $pass = 'xxxxxxxxxxx';
 		
-		function connect()
+		static function connect()
 		{
 			return mysql_connect($host, $user, $pass) != false;
 		}
 		
-		function disconnect()
+		static function disconnect()
 		{
 			return mysql_close() != false;
 		}
 		
-		function safe_str($str)
+		static function safe_str($str)
 		{
 			return mysql_real_escape_string($str);
 		}		
 		
-		function select_single($mysql_query_string)
+		static function select_single($mysql_query_string)
 		{
 			$mysql_query = mysql_query($mysql_query_string);
 			
@@ -35,7 +35,7 @@
 			return false;
 		}
 		
-		function select_multiple($mysql_query_string)
+		static function select_multiple($mysql_query_string)
 		{
 			$mysql_query = mysql_query($mysql_query_string);
 			

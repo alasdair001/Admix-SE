@@ -6,7 +6,7 @@
 	{
 		foreach($keys as $key)
 		{
-			if(!array_key_exists(strval($key), $array))
+			if(!array_key_exists($key, $array))
 			{	
 				return false;
 			}
@@ -17,9 +17,9 @@
 
 	function all_not_empty($array)
 	{
-		foreach($array as $var)
+		foreach($array as $check)
 		{
-			if(empty(strval($var)))
+			if(empty($check))
 			{
 				return false;
 			}
